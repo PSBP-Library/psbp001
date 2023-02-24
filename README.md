@@ -8,7 +8,7 @@ Programs are values of type `Z >--> Y` that are defined in terms of program conc
 The program concepts can
 
 - be implemented in various ways without changing the program definitions,
-- be extended by need.
+- be extended by need,
 - be effectful ones.
 
 ### Functions and Programs
@@ -63,11 +63,11 @@ def factorialFunction: BigInt => BigInt =
 
 Below the algorithmic program concepts
 
-- if-then-else logic
+- if-then-else
 
 and
 
-- local definitions
+- local definition
 
 and
 
