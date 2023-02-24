@@ -291,7 +291,10 @@ import psbp.specification.algorithm.{Algorithm}
 
 import psbp.specification.dataStructure.{DataStructure}
 
-trait Program[>-->[-_, +_], &&[+_, +_]] extends Function[>-->, &&], Algorithm[>-->, &&], DataStructure[>-->, &&]
+trait Program[>-->[-_, +_], &&[+_, +_]]
+    extends Function[>-->, &&],
+      Algorithm[>-->, &&],
+      DataStructure[>-->, &&]
 ```
 
 ### `fibonacciProgram01`
@@ -347,7 +350,15 @@ package examples.specification
 
 import psbp.specification.program.{Program}
 
-import examples.{isZeroFunction, isOneFunction, oneFunction, subtractOneFunction, subtractTwoFunction, addFunction, multiplyFunction}
+import examples.{
+  isZeroFunction,
+  isOneFunction,
+  oneFunction,
+  subtractOneFunction,
+  subtractTwoFunction,
+  addFunction,
+  multiplyFunction
+}
 
 def isZeroProgram[
     >-->[-_, +_]: [_[-_, +_]] =>> Program[>-->, &&],
