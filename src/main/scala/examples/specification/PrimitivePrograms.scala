@@ -2,7 +2,15 @@ package examples.specification
 
 import psbp.specification.program.{Program}
 
-import examples.{isZeroFunction, isOneFunction, oneFunction, subtractOneFunction, subtractTwoFunction, addFunction, multiplyFunction}
+import examples.{
+  isZeroFunction,
+  isOneFunction,
+  oneFunction,
+  subtractOneFunction,
+  subtractTwoFunction,
+  addFunction,
+  multiplyFunction
+}
 
 def isZeroProgram[
     >-->[-_, +_]: [_[-_, +_]] =>> Program[>-->, &&],
@@ -18,7 +26,7 @@ def isOneProgram[
 ]: BigInt >--> Boolean =
   lazy val summonedProgram = summon[Program[>-->, &&]]
   import summonedProgram.functionLift
-  functionLift(isOneFunction)  
+  functionLift(isOneFunction)
 
 def oneProgram[
     Z,
