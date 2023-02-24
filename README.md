@@ -1,5 +1,9 @@
 # Program Specification Based Programming
 
+This is lesson 001 of a "Program Specification Based Programming" course.
+
+All comments are welcome at luc.duponcheel[at]gmail.com.
+
 ## Introduction
 
 Programs are values of type `Z >--> Y` that are defined in terms of program concepts that are specified in
