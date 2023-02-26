@@ -2,7 +2,7 @@ package psbp.specification.algorithm
 
 private[psbp] trait LocalDefinition[>-->[-_, +_], &&[+_, +_]]:
 
-  // external defined
+  // external declared
 
   def Let[Z, Y, X](`z>-->y`: Z >--> Y): In[Z, Y, X]
 

@@ -2,7 +2,7 @@ package psbp.specification.algorithm
 
 private[psbp] trait IfThenElse[>-->[-_, +_]]:
 
-  // external defined
+  // external declared
 
   def If[Z, Y](`z>-->b`: Z >--> Boolean): Then[Z, Y]
 
