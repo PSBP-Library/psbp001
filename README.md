@@ -15,6 +15,8 @@ The program concepts can be
 - extended by need,
 - effectful ones.
 
+## Content
+
 ### Functions and Programs
 
 Below some primitive functions are defined.
