@@ -131,7 +131,7 @@ Below the algorithmic program concepts specified so far are summarized.
 ```scala
 package psbp.specification.algorithm
 
-trait Algorithm[>-->[-_, +_], &&[+_, +_]]
+private[psbp] trait Algorithm[>-->[-_, +_], &&[+_, +_]]
     extends IfThenElse[>-->],
       LocalDefinition[>-->, &&],
       SequentialComposition[>-->]
@@ -282,7 +282,7 @@ private[psbp] trait DataStructure[>-->[-_, +_], &&[+_, +_]] extends Product[>-->
 
 Finally, below the program concepts specified so far are summarized.
 
-```scala
+```scalatrai
 package psbp.specification.program
 
 import psbp.specification.function.{Function}
