@@ -1,8 +1,6 @@
 package psbp.specification.dataStructure
 
-import psbp.specification.algorithm.{SequentialComposition}
-
-private[psbp] trait Product[>-->[-_, +_]: SequentialComposition, &&[+_, +_]]:
+private[psbp] trait Product[>-->[-_, +_], &&[+_, +_]]:
 
   // external declared
 
@@ -12,28 +10,19 @@ private[psbp] trait Product[>-->[-_, +_]: SequentialComposition, &&[+_, +_]]:
 
   extension [Z, Y, X](`z>-->y`: Z >--> Y) def &&(`z>-->x`: => Z >--> X): Z >--> (Y && X)
 
-  // external defined
-
   extension [Z, Y, X, W](`z>-->x`: Z >--> X)
-    def &&&(`y>-->w`: => Y >--> W): (Z && Y) >--> (X && W) =
-      (`(z&&y)>-->z` >--> `z>-->x`) && (`(z&&y)>-->y` >--> `y>-->w`)
+    def &&&(`y>-->w`: => Y >--> W): (Z && Y) >--> (X && W)
 
-  def `(z&&y&&x)>-->z`[Z, Y, X]: (Z && Y && X) >--> Z =
-    `(z&&y)>-->z` >--> `(z&&y)>-->z`
+  def `(z&&y&&x)>-->z`[Z, Y, X]: (Z && Y && X) >--> Z
 
-  def `(z&&y&&x)>-->y`[Z, Y, X]: (Z && Y && X) >--> Y =
-    `(z&&y)>-->z` >--> `(z&&y)>-->y`
+  def `(z&&y&&x)>-->y`[Z, Y, X]: (Z && Y && X) >--> Y
 
-  def `(z&&y&&x)>-->x`[Z, Y, X]: (Z && Y && X) >--> X =
-    `(z&&y)>-->y`
+  def `(z&&y&&x)>-->x`[Z, Y, X]: (Z && Y && X) >--> X
 
-  def `(z&&y&&x)>-->(y&&x)`[Z, Y, X]: (Z && Y && X) >--> (Y && X) =
-    `(z&&y&&x)>-->y` && `(z&&y)>-->y`
+  def `(z&&y&&x)>-->(y&&x)`[Z, Y, X]: (Z && Y && X) >--> (Y && X)
 
-  def `(z&&y&&x)>-->(z&&x)`[Z, Y, X]: (Z && Y && X) >--> (Z && X) =
-    `(z&&y&&x)>-->z` && `(z&&y)>-->y`
+  def `(z&&y&&x)>-->(z&&x)`[Z, Y, X]: (Z && Y && X) >--> (Z && X)
 
-  def `(z&&y&&x)>-->(z&&y)`[Z, Y, X]: (Z && Y && X) >--> (Z && Y) =
-    `(z&&y&&x)>-->z` && `(z&&y&&x)>-->y`
+  def `(z&&y&&x)>-->(z&&y)`[Z, Y, X]: (Z && Y && X) >--> (Z && Y)
 
   // ...

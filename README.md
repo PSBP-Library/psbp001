@@ -9,11 +9,11 @@ All comments are welcome at luc.duponcheel[at]gmail.com.
 Programs are values of type `Z >--> Y` that are defined in terms of program concepts that are specified in
 `trait Program`. 
 
-The program concepts can
+The program concepts can be
 
-- be implemented in various ways without changing the program definitions,
-- be extended by need,
-- be effectful ones.
+- implemented in various ways without changing the program definitions,
+- extended by need,
+- effectful ones.
 
 ### Functions and Programs
 
@@ -31,11 +31,7 @@ private[examples] val subtractOneFunction: BigInt => BigInt = z => z - 1
 private[examples] val multiplyFunction: Tuple2[BigInt, BigInt] => BigInt = (z, y) => z * y
 ```
 
-Below the program concept
-
-- functions can be lifted to programs
-
-is specified.
+Below some function related program concepts are specified.
 
 ```scala
 package psbp.specification.function
@@ -65,19 +61,7 @@ def factorialFunction: BigInt => BigInt =
       multiplyFunction((z, y))
 ```
 
-Below the algorithmic program concepts
-
-- if-then-else
-
-and
-
-- local definition
-
-and
-
-- sequential composition
-
-are specified.
+Below some algorithm related program concepts are specified.
 
 ```scala
 package psbp.specification.algorithm
@@ -126,7 +110,7 @@ private[psbp] trait SequentialComposition[>-->[-_, +_]]:
   extension [Z, Y, X](`z>-->y`: Z >--> Y) def >-->(`y>-->x`: => Y >--> X): Z >--> X
 ```
 
-Below the algorithmic program concepts specified so far are summarized.
+Below the algorithm related program concepts specified so far are summarized.
 
 ```scala
 package psbp.specification.algorithm
@@ -223,19 +207,12 @@ def multiplyProgram[
 
 ### Data Structures
 
-Below the product data structure program concepts 
-
-- projection
-- construction
-
-are specified.
+Below some product related data structure program concepts are specified.
 
 ```scala
 package psbp.specification.dataStructure
 
-import psbp.specification.algorithm.{SequentialComposition}
-
-private[psbp] trait Product[>-->[-_, +_]: SequentialComposition, &&[+_, +_]]:
+private[psbp] trait Product[>-->[-_, +_], &&[+_, +_]]:
 
   // external declared
 
@@ -245,34 +222,25 @@ private[psbp] trait Product[>-->[-_, +_]: SequentialComposition, &&[+_, +_]]:
 
   extension [Z, Y, X](`z>-->y`: Z >--> Y) def &&(`z>-->x`: => Z >--> X): Z >--> (Y && X)
 
-  // external defined
-
   extension [Z, Y, X, W](`z>-->x`: Z >--> X)
-    def &&&(`y>-->w`: => Y >--> W): (Z && Y) >--> (X && W) =
-      (`(z&&y)>-->z` >--> `z>-->x`) && (`(z&&y)>-->y` >--> `y>-->w`)
+    def &&&(`y>-->w`: => Y >--> W): (Z && Y) >--> (X && W)
 
-  def `(z&&y&&x)>-->z`[Z, Y, X]: (Z && Y && X) >--> Z =
-    `(z&&y)>-->z` >--> `(z&&y)>-->z`
+  def `(z&&y&&x)>-->z`[Z, Y, X]: (Z && Y && X) >--> Z
 
-  def `(z&&y&&x)>-->y`[Z, Y, X]: (Z && Y && X) >--> Y =
-    `(z&&y)>-->z` >--> `(z&&y)>-->y`
+  def `(z&&y&&x)>-->y`[Z, Y, X]: (Z && Y && X) >--> Y
 
-  def `(z&&y&&x)>-->x`[Z, Y, X]: (Z && Y && X) >--> X =
-    `(z&&y)>-->y`
+  def `(z&&y&&x)>-->x`[Z, Y, X]: (Z && Y && X) >--> X
 
-  def `(z&&y&&x)>-->(y&&x)`[Z, Y, X]: (Z && Y && X) >--> (Y && X) =
-    `(z&&y&&x)>-->y` && `(z&&y)>-->y`
+  def `(z&&y&&x)>-->(y&&x)`[Z, Y, X]: (Z && Y && X) >--> (Y && X)
 
-  def `(z&&y&&x)>-->(z&&x)`[Z, Y, X]: (Z && Y && X) >--> (Z && X) =
-    `(z&&y&&x)>-->z` && `(z&&y)>-->y`
+  def `(z&&y&&x)>-->(z&&x)`[Z, Y, X]: (Z && Y && X) >--> (Z && X)
 
-  def `(z&&y&&x)>-->(z&&y)`[Z, Y, X]: (Z && Y && X) >--> (Z && Y) =
-    `(z&&y&&x)>-->z` && `(z&&y&&x)>-->y`
+  def `(z&&y&&x)>-->(z&&y)`[Z, Y, X]: (Z && Y && X) >--> (Z && Y)
 
   // ...
 ```
 
-Below the data structure program concepts specified so far are summarized.
+Below the data structure related program concepts specified so far are summarized.
 
 ```scala
 package psbp.specification.dataStructure
@@ -282,7 +250,7 @@ private[psbp] trait DataStructure[>-->[-_, +_], &&[+_, +_]] extends Product[>-->
 
 Finally, below the program concepts specified so far are summarized.
 
-```scalatrai
+```scala
 package psbp.specification.program
 
 import psbp.specification.function.{Function}
