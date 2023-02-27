@@ -33,7 +33,7 @@ private[examples] val subtractOneFunction: BigInt => BigInt = z => z - 1
 private[examples] val multiplyFunction: Tuple2[BigInt, BigInt] => BigInt = (z, y) => z * y
 ```
 
-Below some function related program concepts are specified.
+Below the basic function related program concepts are specified.
 
 ```scala
 package psbp.specification.function
@@ -46,6 +46,8 @@ private[psbp] trait Function[>-->[-_, +_], &&[+_, +_]]:
 
   def functionFromTuple2Lift[Z, Y, X]: (Tuple2[Z, Y] => X) => ((Z && Y) >--> X)
 ```
+
+In other words: functions can be lifted to corresponding programs.
 
 ### Algorithms and Programs
 
@@ -63,7 +65,7 @@ def factorialFunction: BigInt => BigInt =
       multiplyFunction((z, y))
 ```
 
-Below some algorithm related program concepts are specified.
+Below the corresponding algorithm related program concepts are specified.
 
 ```scala
 package psbp.specification.algorithm
@@ -209,7 +211,7 @@ def multiplyProgram[
 
 ### Data Structures
 
-Below some product related data structure program concepts are specified.
+Below the basic and some derived product related data structure program concepts are specified.
 
 ```scala
 package psbp.specification.dataStructure
