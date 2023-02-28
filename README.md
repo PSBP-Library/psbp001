@@ -45,6 +45,10 @@ private[psbp] trait Function[>-->[-_, +_], &&[+_, +_]]:
   def functionLift[Z, Y]: (Z => Y) => (Z >--> Y)
 
   def functionFromTuple2Lift[Z, Y, X]: (Tuple2[Z, Y] => X) => ((Z && Y) >--> X)
+
+  def functionFromTuple3Lift[Z, Y, X, W]: (Tuple3[Z, Y, X] => W) => ((Z && Y && X) >--> W)
+
+  // ...
 ```
 
 In other words: functions can be lifted to corresponding programs.
